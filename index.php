@@ -102,4 +102,8 @@ La concentrazione va tutta sul rapporto tra:
         }
     }
 
+    $stipendio = new Stipendio("1200", true, false);
+    
+    echo $stipendio -> getHtml();
+
 ?>
