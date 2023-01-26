@@ -123,8 +123,8 @@ La concentrazione va tutta sul rapporto tra:
         public function getHtml() {
 
             return "Stipendio mensile: " . $this -> getMensile() . "&euro;" .
-                "<br>Tredicesima: " . ($this -> getTredicesima() ? $this -> getTredicesima() : "No") . 
-                "<br>Quattordicesima: " . ($this -> getQuattordicesima() ?  $this -> getQuattordicesima() : "No") . 
+                "<br>Tredicesima: " . ($this -> getTredicesima() ? "Si" : "No") . 
+                "<br>Quattordicesima: " . ($this -> getQuattordicesima() ?  "Si" : "No") . 
                 "<br>Stipendio Annuale: " . $this -> getStipendioAnnuale() . "&euro;";
         }
         
