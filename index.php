@@ -60,7 +60,9 @@ La concentrazione va tutta sul rapporto tra:
 <?php
 
     class Stipendio {
-        
+        private $mensile;
+        private $tredicesima;
+        private $quattordicesima;
     }
 
 ?>
