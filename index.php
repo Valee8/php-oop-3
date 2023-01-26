@@ -63,12 +63,14 @@ La concentrazione va tutta sul rapporto tra:
         private $mensile;
         private $tredicesima;
         private $quattordicesima;
+        private $stipendioAnnuale;
 
-        public function __construct($mensile, $tredicesima, $quattordicesima) {
+        public function __construct($mensile, $tredicesima, $quattordicesima, $stipendioAnnuale) {
 
             $this -> setMensile($mensile);
             $this -> setTredicesima($tredicesima);
             $this -> setQuattordicesima($quattordicesima);
+            $this -> setStipendioAnnuale($stipendioAnnuale);
         }
 
         public function setMensile($mensile) {
@@ -80,7 +82,15 @@ La concentrazione va tutta sul rapporto tra:
         }
 
         public function setTredicesima($tredicesima) {
+
             $this -> tredicesima = $tredicesima;
+
+            if ($this -> tredicesima) {
+                $this -> tredicesima = $this -> mensile;
+            }
+            else {
+                $this -> tredicesima = 0;
+            }
         }
 
         public function getTredicesima() {
@@ -89,20 +99,38 @@ La concentrazione va tutta sul rapporto tra:
 
         public function setQuattordicesima($quattordicesima) {
             $this -> quattordicesima = $quattordicesima;
+
+            if ($this -> quattordicesima) {
+                $this -> quattordicesima = $this -> mensile; 
+            }
+            else {
+                $this -> quattordicesima = 0;
+            }
         }
 
         public function getQuattordicesima() {
             return $this -> quattordicesima;
         }
 
-        public function getHtml() {
-            return "Stipendio: " . $this -> getMensile() . "&euro;" .
-                "<br>Tredicesima: " . ($this -> getTredicesima() ? "Si" : "No") . 
-                "<br>Quattordicesima: " . ($this -> getQuattordicesima() ? "Si" : "No") ;
+        public function setStipendioAnnuale($stipendioAnnuale) {
+            $this -> stipendioAnnuale = ($this -> mensile * 12 + $this -> tredicesima + $this -> quattordicesima);
         }
+
+        public function getStipendioAnnuale() {
+            return $this -> stipendioAnnuale;
+        }
+
+        public function getHtml() {
+
+            return "Stipendio mensile: " . $this -> getMensile() . "&euro;" .
+                "<br>Tredicesima: " . ($this -> getTredicesima() ? $this -> getTredicesima() : "No") . 
+                "<br>Quattordicesima: " . ($this -> getQuattordicesima() ?  $this -> getQuattordicesima() : "No") . 
+                "<br>Stipendio Annuale: " . $this -> getStipendioAnnuale() . "&euro;";
+        }
+        
     }
 
-    $stipendio = new Stipendio("1200", true, false);
+    $stipendio = new Stipendio("1200", true, false, "");
     
     echo $stipendio -> getHtml();
 
