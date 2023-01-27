@@ -232,9 +232,56 @@ La concentrazione va tutta sul rapporto tra:
         }
     }
 
+    class Capo extends Persona {
+        private $dividendo;
+        private $bonus;
+        private $reddito;
+
+        public function __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale, $dividendo, $bonus, $reddito) {
+
+            parent :: __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale);
+
+            $this -> setDividendo($dividendo);
+            $this -> setBonus($bonus);
+            $this -> setReddito($reddito);
+
+        }
+
+        public function setDividendo($dividendo) {
+            $this -> dividendo = $dividendo;
+        }
+
+        public function getDividendo() {
+            return $this -> dividendo;
+        }
+
+        public function setBonus($bonus) {
+            $this -> bonus = $bonus;
+        }
+
+        public function getBonus() {
+            return $this -> bonus;
+        }
+
+        public function setReddito($reddito) {
+            $this -> reddito = ($this -> dividendo * 12 + $this -> bonus);
+        }
+
+        public function getReddito() {
+            return $this -> reddito;
+        }
+
+        public function getHtml() {
+            return parent :: getHtml() . "<br>Reddito annuale: " . $this -> getReddito();
+        }
+    }
+
     $stipendio = new Stipendio("1200", true, false, "");
     $impiegato = New Impiegato("Mario", "Rossi", "12-10-2020", "Roma", "Codice fiscale", $stipendio, "12-10-2020");
+    $capo = new Capo("Luigi", "Verdi", "12-10-2020", "Roma", "Codice fiscale", 0.26, 14000, "");
 
     echo $impiegato -> getHtml();
+
+    echo $capo -> getHtml();
 
 ?>
