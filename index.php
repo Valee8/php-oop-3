@@ -63,14 +63,12 @@ La concentrazione va tutta sul rapporto tra:
         private $mensile;
         private $tredicesima;
         private $quattordicesima;
-        private $stipendioAnnuale;
 
-        public function __construct($mensile, $tredicesima, $quattordicesima, $stipendioAnnuale) {
+        public function __construct($mensile, $tredicesima, $quattordicesima) {
 
             $this -> setMensile($mensile);
             $this -> setTredicesima($tredicesima);
             $this -> setQuattordicesima($quattordicesima);
-            $this -> setStipendioAnnuale($stipendioAnnuale);
         }
 
         public function setMensile($mensile) {
@@ -112,12 +110,8 @@ La concentrazione va tutta sul rapporto tra:
             return $this -> quattordicesima;
         }
 
-        public function setStipendioAnnuale($stipendioAnnuale) {
-            $this -> stipendioAnnuale = ($this -> mensile * 12 + $this -> tredicesima + $this -> quattordicesima);
-        }
-
         public function getStipendioAnnuale() {
-            return $this -> stipendioAnnuale;
+            return ($this -> mensile * 12 + $this -> tredicesima + $this -> quattordicesima);
         }
 
         public function getHtml() {
@@ -235,15 +229,13 @@ La concentrazione va tutta sul rapporto tra:
     class Capo extends Persona {
         private $dividendo;
         private $bonus;
-        private $reddito;
 
-        public function __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale, $dividendo, $bonus, $reddito) {
+        public function __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale, $dividendo, $bonus) {
 
             parent :: __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale);
 
             $this -> setDividendo($dividendo);
             $this -> setBonus($bonus);
-            $this -> setReddito($reddito);
 
         }
 
@@ -263,12 +255,8 @@ La concentrazione va tutta sul rapporto tra:
             return $this -> bonus;
         }
 
-        public function setReddito($reddito) {
-            $this -> reddito = ($this -> dividendo * 12 + $this -> bonus);
-        }
-
         public function getReddito() {
-            return $this -> reddito;
+            return ($this -> dividendo * 12 + $this -> bonus);
         }
 
         public function getHtml() {
@@ -276,9 +264,9 @@ La concentrazione va tutta sul rapporto tra:
         }
     }
 
-    $stipendio = new Stipendio("1200", true, false, "");
+    $stipendio = new Stipendio("1200", true, false);
     $impiegato = New Impiegato("Mario", "Rossi", "12-10-2020", "Roma", "Codice fiscale", $stipendio, "12-10-2020");
-    $capo = new Capo("Luigi", "Verdi", "12-10-2020", "Roma", "Codice fiscale", 0.26, 18000, "");
+    $capo = new Capo("Luigi", "Verdi", "12-10-2020", "Roma", "Codice fiscale", 0.26, 18000);
 
     echo $impiegato -> getHtml();
 
