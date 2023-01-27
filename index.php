@@ -197,4 +197,44 @@ La concentrazione va tutta sul rapporto tra:
         }
     }
 
+
+    class Impiegato extends Persona {
+        private Stipendio $stipendio;
+        private $dataDiAssunzione;
+
+        public function __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale, Stipendio $stipendio, $dataDiAssunzione) {
+
+            parent :: __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale);
+
+            $this -> setStipendio($stipendio);
+
+            $this -> setDataDiAssunzione($dataDiAssunzione);
+        }
+
+        public function setStipendio(Stipendio $stipendio) {
+            $this -> stipendio = $stipendio;
+        }
+
+        public function getStipendio() {
+            return $this -> stipendio;
+        }
+
+        public function setDataDiAssunzione($dataDiAssunzione) {
+            $this -> dataDiAssunzione = $dataDiAssunzione;
+        }
+
+        public function getDataDiAssunzione() {
+            return $this -> dataDiAssunzione;
+        }
+
+        public function getHtml() {
+            return parent :: getHtml() . "<br>" . $this -> getStipendio() -> getHtml() . "<br><br>";
+        }
+    }
+
+    $stipendio = new Stipendio("1200", true, false, "");
+    $impiegato = New Impiegato("Mario", "Rossi", "12-10-2020", "Roma", "Codice fiscale", $stipendio, "12-10-2020");
+
+    echo $impiegato -> getHtml();
+
 ?>
