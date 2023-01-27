@@ -130,8 +130,71 @@ La concentrazione va tutta sul rapporto tra:
         
     }
 
-    $stipendio = new Stipendio("1200", true, false, "");
-    
-    echo $stipendio -> getHtml();
+
+    class Persona {
+        private $nome;
+        private $cognome;
+        private $dataDiNascita;
+        private $luogoDiNascita;
+        private $codiceFiscale;
+
+        public function __construct($nome, $cognome, $dataDiNascita, $luogoDiNascita, $codiceFiscale) {
+
+            $this -> setNome($nome);
+            $this -> setCognome($cognome);
+            $this -> setDataDiNascita($dataDiNascita);
+            $this -> setLuogoDiNascita($luogoDiNascita);
+            $this -> setCodiceFiscale($codiceFiscale);
+
+        }
+
+        public function setNome($nome) {
+            $this -> nome = $nome;
+        }
+
+        public function getNome() {
+            return $this -> nome;
+        }
+
+        public function setCognome($cognome) {
+            $this -> cognome = $cognome;
+        }
+
+        public function getCognome() {
+            return $this -> cognome;
+        }
+
+        public function setDataDiNascita($dataDiNascita) {
+            $this -> dataDiNascita = $dataDiNascita;
+        }
+
+        public function getDataDiNascita() {
+            return $this -> dataDiNascita;
+        }
+
+        public function setLuogoDiNascita($luogoDiNascita) {
+            $this -> luogoDiNascita = $luogoDiNascita;
+        }
+
+        public function getLuogoDiNascita() {
+            return $this -> luogoDiNascita;
+        }
+
+        public function setCodiceFiscale($codiceFiscale) {
+            $this -> codiceFiscale = $codiceFiscale;
+        }
+
+        public function getCodiceFiscale() {
+            return $this -> codiceFiscale;
+        }
+
+        public function getHtml() {
+            return "Nome: " . $this -> getNome() . 
+            "<br>Cognome: " . $this -> getCognome() . 
+            "<br>Data di nascita: " . $this -> getDataDiNascita() . 
+            "<br>Luogo di nascita: " . $this -> getLuogoDiNascita() . 
+            "<br>Codice fiscale: " . $this -> getCodiceFiscale();
+        }
+    }
 
 ?>
