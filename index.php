@@ -278,7 +278,7 @@ La concentrazione va tutta sul rapporto tra:
 
     $stipendio = new Stipendio("1200", true, false, "");
     $impiegato = New Impiegato("Mario", "Rossi", "12-10-2020", "Roma", "Codice fiscale", $stipendio, "12-10-2020");
-    $capo = new Capo("Luigi", "Verdi", "12-10-2020", "Roma", "Codice fiscale", 0.26, 14000, "");
+    $capo = new Capo("Luigi", "Verdi", "12-10-2020", "Roma", "Codice fiscale", 0.26, 18000, "");
 
     echo $impiegato -> getHtml();
 
